@@ -10,6 +10,7 @@ int loading() {
   sleep(1000);
   cout << "\b\b";
   cout << "|]";
+  sleep(250);
 }
 int main() {
   loading();
