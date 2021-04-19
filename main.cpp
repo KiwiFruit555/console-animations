@@ -32,5 +32,5 @@ int main() {
   cout << "Loading... ";
   loading(10);
   clsInt(3);
-  cout << "[0]
+  cout << "[0]";
 }
