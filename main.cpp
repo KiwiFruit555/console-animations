@@ -7,10 +7,10 @@ using namespace std;
 int loading() {
   cout << "Loading... [";
   cout << "O]";
-  sleep(1000);
+  sleep(1);
   cout << "\b\b";
   cout << "|]";
-  sleep(250);
+  sleep(2);
 }
 int main() {
   loading();
