@@ -10,7 +10,7 @@ void clsInt(int characterLength) {
   }
 }
 void loading(int times) {
-  cout << "[*]";
+  cout << "[O]";
   sleep(1000);
   for (int i = 0; i < times; i++) {
     clsInt(3);
