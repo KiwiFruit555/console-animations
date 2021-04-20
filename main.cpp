@@ -6,7 +6,7 @@ using namespace std;
 
 int loading() {
   cout << "Loading... ";
-  sleep(1000);
+  sleep(10);
   cout << "hi";
   cout << "e";
   return 0;
