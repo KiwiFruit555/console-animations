@@ -1,17 +1,17 @@
 #include <iostream>
-#include <unistd.h>
+#include <windows.h>
 
 using namespace std;
 
 
 int loading() {
-  sleep(0.25);
+  Sleep(1000);
   cout << "Loading... ";
-  sleep(0.25);
+  Sleep(0.25);
   cout << "hi";
-  sleep(0.25);
+  Sleep(0.25);
   cout << "e";
-  sleep(0.25);
+  Sleep(0.25);
   return 0;
 }
 int main() {
