@@ -5,13 +5,13 @@ using namespace std;
 
 
 int loading() {
-  Sleep(1000);
+  Sleep(250);
   cout << "Loading... ";
-  Sleep(0.25);
+  Sleep(250);
   cout << "hi";
-  Sleep(0.25);
+  Sleep(250);
   cout << "e";
-  Sleep(0.25);
+  Sleep(250);
   return 0;
 }
 int main() {
