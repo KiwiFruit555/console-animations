@@ -4,9 +4,9 @@ using namespace std;
 
 
 int loading() {
-  cout << "Loading... [";
-  cout << "O]";
-  cout << "|]";
+  cout << "Loading... ";
+  cout << "hi";
+  cout << "e";
 }
 int main() {
   loading();
