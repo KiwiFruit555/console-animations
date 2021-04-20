@@ -1,6 +1,7 @@
 name: Build
 
-on: [push]
+# It should be [push] but I changed it bc there won't be anything to build here on main
+on: [workflow_dispatch]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
