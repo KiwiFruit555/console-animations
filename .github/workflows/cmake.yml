@@ -44,3 +44,9 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       shell: bash
       run: ./Terminal
+
+    - name: Upload
+      uses: actions/upload-artifact@v2.2.3
+      with:
+        name: linux
+        path: ${{github.workspace}}/build/Terminal
