@@ -4,18 +4,10 @@
 
 using namespace std;
 
-void kiwisleep(const args) {
-  chrono_literals::sleep_for(args);
-}
 
-int loading() {
-  kiwisleep(1000ms);
-  cout << "Loading... ";
-  cout << "hi";
-  cout << "e";
-  return 0;
-}
-int main() {
-  loading();
+int main(string args) {
+  cout << "This is a wait function!";
+  chrono_literals::std::this_thread::sleep_for(2000ms);
+  cout << " hehehe";
   return 0;
 }
