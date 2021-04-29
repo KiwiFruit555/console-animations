@@ -1,17 +1,18 @@
 #include <iostream>
-#include <unistd.h>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
+void kiwisleep(const args) {
+  chrono_literals::sleep_for(args);
+}
 
 int loading() {
-  sleep(1000);
+  kiwisleep(1000ms);
   cout << "Loading... ";
-  sleep(1000);
   cout << "hi";
-  sleep(1000);
   cout << "e";
-  sleep(1000);
   return 0;
 }
 int main() {
