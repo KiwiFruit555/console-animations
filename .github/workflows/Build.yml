@@ -112,7 +112,9 @@ jobs:
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}/testing/Terminal
+      run: |
+        cd ${{ github.workspace }}/testing/
+        ./Terminal
 
   test-macos:
     runs-on: macos-latest
