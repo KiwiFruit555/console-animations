@@ -102,8 +102,8 @@ jobs:
       uses: actions/download-artifact@v2.0.9
       with:
         name: Linux
-        path: ${{ github.workspace }}/testing/
+        path: ${{ github.workspace }}/testing
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}/testing/Terminal
+      run: ${{ github.workspace }}/testing
