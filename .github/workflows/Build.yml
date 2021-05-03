@@ -115,6 +115,10 @@ jobs:
       run: |
         execute_process (
           COMMAND ${{ github.workspace }}/testing/Terminal
+          RESULT_VARIABLE result
+          OUTPUT_VARIABLE output
+          ERROR_VARIABLE output
+          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
         )
 
   test-macos:
@@ -133,7 +137,14 @@ jobs:
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}/testing/Terminal
+      run: |
+        execute_process (
+          COMMAND ${{ github.workspace }}/testing/Terminal
+          RESULT_VARIABLE result
+          OUTPUT_VARIABLE output
+          ERROR_VARIABLE output
+          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
+        )
       
   test-windows:
     runs-on: windows-latest
@@ -151,4 +162,11 @@ jobs:
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}/testing/Terminal.exe
+      run: |
+        execute_process (
+          COMMAND ${{ github.workspace }}/testing/Terminal.exe
+          RESULT_VARIABLE result
+          OUTPUT_VARIABLE output
+          ERROR_VARIABLE output
+          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
+        )
