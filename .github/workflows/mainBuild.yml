@@ -83,6 +83,7 @@ jobs:
   test:
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.name }}
+    needs: build
     strategy:
       matrix:
         config:
