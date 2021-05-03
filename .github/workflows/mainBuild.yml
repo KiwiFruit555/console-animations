@@ -19,7 +19,8 @@ jobs:
         config:
          - {
              name: "Windows Latest", artifact: "Terminal.exe",
-             os: "windows-latest"
+             os: "windows-latest",
+             cc: "cl", cxx: "cl"
            }
          #- {
          #    name: "macOS Latest",
@@ -27,7 +28,8 @@ jobs:
          #  }
          - {
              name: "Linux Latest", artifact: "Terminal",
-             os: "ubuntu-latest"
+             os: "ubuntu-latest",
+             cc: "gcc", cxx: "g++"
            }
 
     steps:
@@ -46,7 +48,10 @@ jobs:
       # Note the current convention is to use the -S and -B options here to specify source 
       # and build directories, but this is only available with CMake 3.13 and higher.  
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        set(ENV{CC} ${{ matrix.config.cc }})
+        set(ENV{CXX} ${{ matrix.config.cxx }})
 
     - name: Build
       working-directory: ${{github.workspace}}/build
