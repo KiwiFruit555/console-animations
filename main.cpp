@@ -5,8 +5,8 @@
 int main()
 {
     using namespace std::chrono_literals;
-    std::cout << "Roblox failed to launch! \n" << std::flush;
-    std::cout << "\nGathering error data... (  0%) [O] [------]" << std::flush;
+    std::cout << "Hehe starting \n" << std::flush;
+    std::cout << "\nUwU... (  0%) [O] [------]" << std::flush;
     std::this_thread::sleep_for(250ms);
     std::cout << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
     std::cout << " 17%) [/] [#-----]" << std::flush;
@@ -30,11 +30,11 @@ int main()
     std::cout << "100%) [0] [######]" << std::flush;
     std::this_thread::sleep_for(1000ms);
     std::cout << "\n---LOG-------------------\n";
-    std::cout << "<FATAL> Application exited with code 2:\n  Required application library is not found.\n<DEBUG> Running launch fail debugger...";
+    std::cout << "hehe UwU go brr";
     std::cout << "\n---LOG END---------------\n" << std::flush;
-    std::cout << "\nPlease try reinstalling roblox on the next official update date:\n  May 06 2021\n";
-    std::cout << "Current downloaded release is confirmed to be latest, but no fix has been reported. Thanks for using Roblox!" << std::flush;
+    std::cout << "\nOwO I'm bored";
+    std::cout << "reeeeeeeeeeeeeee" << std::flush;
     std::this_thread::sleep_for(1000ms);
-    std::cout << "\n\nClosing this terminal in 5 seconds." << std::flush;
+    std::cout << "\n\neeeee" << std::flush;
     std::this_thread::sleep_for(5000ms);
 }
