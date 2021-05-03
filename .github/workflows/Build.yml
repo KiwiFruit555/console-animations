@@ -112,7 +112,7 @@ jobs:
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}/testing
+      run: ${{ github.workspace }}/testing/Terminal
 
   test-macos:
     runs-on: macos-latest
@@ -130,7 +130,7 @@ jobs:
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}/testing
+      run: ${{ github.workspace }}/testing/Terminal
       
   test-windows:
     runs-on: windows-latest
@@ -148,4 +148,4 @@ jobs:
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}/testing
+      run: ${{ github.workspace }}/testing/Terminal.exe
