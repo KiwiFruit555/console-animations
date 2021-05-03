@@ -54,7 +54,7 @@ jobs:
       run: |
         set(ENV{CC} ${{ matrix.config.cc }})
         set(ENV{CXX} ${{ matrix.config.cxx }})
-        cmake $ENV{GITHUB_WORKSPACE} -DCMAKE_BUILD_TYPE=$ENV{BUILD_TYPE}
+        COMMAND cmake $ENV{GITHUB_WORKSPACE} -DCMAKE_BUILD_TYPE=$ENV{BUILD_TYPE}
 
     - name: Build
       working-directory: ${{github.workspace}}/build
