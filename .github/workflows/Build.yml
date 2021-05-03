@@ -1,4 +1,4 @@
-name: Build
+name: Build and Test
 
 # It should be [push] but I changed it bc there won't be anything to build here on main
 on: [workflow_dispatch]
