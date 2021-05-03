@@ -18,7 +18,7 @@ jobs:
       matrix:
         config:
          - {
-             name: "Windows Latest",
+             name: "Windows Latest", artifact: "Terminal.exe",
              os: "windows-latest"
            }
          #- {
@@ -66,5 +66,5 @@ jobs:
      # Artifact name
         name: ${{ matrix.config.name }}
     # A file, directory or wildcard pattern that describes what to upload
-        path: ${{ github.workspace }}/build/${{ matrix.config.artifact }}
+        path: ${{ github.workspace }}/build/release/${{ matrix.config.artifact }}
 
