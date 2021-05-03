@@ -116,6 +116,14 @@ jobs:
         # Destination path
         path: ${{ github.workspace }}/testing/
     
+    - name: Extract Archive
+      shell: cmake -P {0}
+      run: |
+        execute_process(
+          COMMAND ${CMAKE_COMMAND} -E tar xzf ${GITHUB_WORKSPACE}/testing/${{ matrix.config.artifact }}
+          WORKING_DIRECTORY ${GITHUB_WORKSPACE}/testing/
+        )
+    
     - name: Test
       working-directory: ${{ github.workspace }}/testing/
       shell: bash
