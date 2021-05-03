@@ -108,11 +108,11 @@ jobs:
       uses: actions/download-artifact@v2.0.9
       with:
         name: Linux
-        path: ${{ github.workspace }}\testing
+        path: ${{ github.workspace }}/testing
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}\testing\Terminal
+      run: ${{ github.workspace }}/testing/Linux
 
   test-macos:
     runs-on: macos-latest
@@ -126,11 +126,11 @@ jobs:
       uses: actions/download-artifact@v2.0.9
       with:
         name: macOS
-        path: ${{ github.workspace }}\testing
+        path: ${{ github.workspace }}/testing
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}\testing\Terminal
+      run: ${{ github.workspace }}/testing/Terminal
       
   test-windows:
     runs-on: windows-latest
@@ -144,8 +144,8 @@ jobs:
       uses: actions/download-artifact@v2.0.9
       with:
         name: Windows
-        path: ${{ github.workspace }}\testing
+        path: ${{ github.workspace }}/testing
     
     - name: Test
       shell: bash
-      run: ${{ github.workspace }}\testing\Terminal.exe
+      run: ${{ github.workspace }}/testing/Terminal.exe
