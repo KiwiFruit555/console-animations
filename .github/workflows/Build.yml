@@ -110,6 +110,12 @@ jobs:
         name: Linux
         path: ${{ github.workspace }}/testing/
     
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v2.2.3
+      with:
+        name: Testing folder
+        path: ${{ github.workspace }}/testing/
+    
     - name: Test
       shell: bash
       run: |
