@@ -107,10 +107,7 @@ jobs:
     - name: Extract Archive
       shell: cmake -P {0}
       run: |
-        execute_process(
-          COMMAND file(ARCHIVE_EXTRACT INPUT Linux.zip)
-          WORKING_DIRECTORY ${{ github.workspace }}/testing/
-        )
+        file(ARCHIVE_EXTRACT INPUT in_file.zip)
     
     - name: Test
       working-directory: ${{ github.workspace }}/testing/
