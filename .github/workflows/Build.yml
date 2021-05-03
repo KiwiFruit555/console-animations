@@ -104,13 +104,6 @@ jobs:
         name: Linux
         path: ${{ github.workspace }}/testing/
     
-    - name: Extract Archive
-      working-directory: ${{ github.workspace }}/testing/
-      shell: cmake -P {0}
-      run: |
-        file(ARCHIVE_EXTRACT INPUT Linux)
-    
     - name: Test
-      working-directory: ${{ github.workspace }}/testing/
       shell: bash
-      run: ./Terminal
+      run: ${{ github.workspace }}/testing/Terminal
