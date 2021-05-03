@@ -1,0 +1,118 @@
+name: Build
+
+# It should be [push] but I changed it bc there won't be anything to build here on main
+on: [workflow_dispatch]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build-linux:
+    # The CMake configure and build commands are platform agnostic and should work equally
+    # well on Windows or Mac.  You can convert this to a matrix build if you need
+    # cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+    name: Linux Latest
+    strategy:
+      matrix:
+        config:
+         - {
+             name: "Windows Latest", artifact: "Terminal.exe",
+             os: "windows-latest",
+             path: "build/release", file: "Windows",
+             cc: "cl", cxx: "cl"
+           }
+         #- {
+         #    name: "macOS Latest", artifact: "Terminal",
+         #    os: "macos-latest",
+         #    path: "build", file: "macOS",
+         #    cc: "clang", cxx: "clang++"
+         #  }
+         - {
+             name: "Linux Latest", artifact: "Terminal",
+             os: "ubuntu-latest",
+             path: "build", file: "Linux",
+             cc: "gcc", cxx: "g++"
+           }
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create Build Environment
+      # Some projects don't allow in-source building, so create a separate build directory
+      # We'll use this as our working directory for all subsequent commands
+      run: cmake -E make_directory ${{github.workspace}}/build
+
+    - name: Configure CMake
+      # Use a bash shell so we can use the same syntax for environment variable
+      # access regardless of the host operating system
+      shell: cmake -P {0}
+      working-directory: ${{github.workspace}}/build
+      # Note the current convention is to use the -S and -B options here to specify source 
+      # and build directories, but this is only available with CMake 3.13 and higher.  
+      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
+      run: |
+        set(ENV{CC} gcc)
+        set(ENV{CXX} g++)
+        execute_process (
+          COMMAND cmake $ENV{GITHUB_WORKSPACE} -DCMAKE_BUILD_TYPE=$ENV{BUILD_TYPE}
+        )
+    - name: Build
+      working-directory: ${{github.workspace}}/build
+      shell: bash
+      run: cmake --build . --config $BUILD_TYPE
+    
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v2.2.3
+      with:
+        name: Linux
+        path: ${{ github.workspace }}/build/Terminal
+
+  test-linux:
+    runs-on: ${{ matrix.config.os }}
+    name: Test::Linux
+    needs: build-linux
+    strategy:
+      matrix:
+        config:
+         - {
+             name: "Test-Windows", artifact: "Terminal.exe",
+             os: "windows-latest",
+             path: "build/release", file: "Windows",
+             cc: "cl", cxx: "cl"
+           }
+         #- {
+         #    name: "Test-macOS", artifact: "Terminal",
+         #    os: "macos-latest",
+         #    path: "build", file: "macOS",
+         #    cc: "clang", cxx: "clang++"
+         #  }
+         - {
+             name: "Test-Linux", artifact: "Terminal",
+             os: "ubuntu-latest",
+             path: "build", file: "Linux",
+             cc: "gcc", cxx: "g++"
+           }
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Download Artifact
+      uses: actions/download-artifact@v2.0.9
+      with:
+        name: Linux
+        path: ${{ github.workspace }}/testing/
+    
+    - name: Extract Archive
+      shell: cmake -P {0}
+      run: |
+        execute_process(
+          COMMAND ${CMAKE_COMMAND} -E tar xzf ${{ github.workspace }}/testing/Linux.zip
+          WORKING_DIRECTORY ${{ github.workspace }}/testing/
+        )
+    
+    - name: Test
+      working-directory: ${{ github.workspace }}/testing/
+      shell: bash
+      run: ./Linux
