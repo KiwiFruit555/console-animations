@@ -67,7 +67,7 @@ jobs:
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v2.2.3
       with:
-        name: Linux
+        name: Linux.zip
         path: ${{ github.workspace }}/build/Terminal
 
   test-linux:
@@ -108,7 +108,7 @@ jobs:
       shell: cmake -P {0}
       run: |
         execute_process(
-          COMMAND ${CMAKE_COMMAND} -E zip xzf ${{ github.workspace }}/testing/Linux.zip
+          COMMAND ${CMAKE_COMMAND} -E tar xzf ${{ github.workspace }}/testing/Linux.zip
           WORKING_DIRECTORY ${{ github.workspace }}/testing/
         )
     
