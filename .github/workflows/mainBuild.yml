@@ -18,7 +18,7 @@ jobs:
       matrix:
         config:
          - {
-             name: "Windows Latest"
+             name: "Windows Latest",
              os: "windows-latest"
            }
 
