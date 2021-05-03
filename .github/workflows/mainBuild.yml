@@ -21,6 +21,14 @@ jobs:
              name: "Windows Latest",
              os: "windows-latest"
            }
+         - {
+             name: "macOS Latest",
+             os: "macos-latest"
+           }
+         - {
+             name: "Linux Latest",
+             os: "ubuntu-latest"
+           }
 
     steps:
     - uses: actions/checkout@v2
