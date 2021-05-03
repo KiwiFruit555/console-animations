@@ -88,19 +88,19 @@ jobs:
       matrix:
         config:
          - {
-             name: "Windows Latest", artifact: "Terminal.exe",
+             name: "Test-Windows", artifact: "Terminal.exe",
              os: "windows-latest",
              path: "build/release", file: "Windows",
              cc: "cl", cxx: "cl"
            }
          #- {
-         #    name: "macOS Latest", artifact: "Terminal",
+         #    name: "Test-macOS", artifact: "Terminal",
          #    os: "macos-latest",
          #    path: "build", file: "macOS",
          #    cc: "clang", cxx: "clang++"
          #  }
          - {
-             name: "Linux Latest", artifact: "Terminal",
+             name: "Test-Linux", artifact: "Terminal",
              os: "ubuntu-latest",
              path: "build", file: "Linux",
              cc: "gcc", cxx: "g++"
@@ -112,7 +112,7 @@ jobs:
       uses: actions/download-artifact@v2.0.9
       with:
         # Artifact name
-        name: ${{ matrix.config.artifact }}
+        name: ${{ matrix.config.file }}
         # Destination path
         path: ${{ github.workspace }}/testing/
     
