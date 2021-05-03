@@ -72,7 +72,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
     #  run: echo 
     
-    - name: Upload a Build Artifact
+    - name: Upload Build Artifact
       uses: actions/upload-artifact@v2.2.3
       with:
      # Artifact name
@@ -80,3 +80,42 @@ jobs:
     # A file, directory or wildcard pattern that describes what to upload
         path: ${{ github.workspace }}/${{ matrix.config.path }}/${{ matrix.config.artifact }}
 
+  test:
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.name }}
+    strategy:
+      matrix:
+        config:
+         - {
+             name: "Windows Latest", artifact: "Terminal.exe",
+             os: "windows-latest",
+             path: "build/release", file: "Windows",
+             cc: "cl", cxx: "cl"
+           }
+         #- {
+         #    name: "macOS Latest", artifact: "Terminal",
+         #    os: "macos-latest",
+         #    path: "build", file: "macOS",
+         #    cc: "clang", cxx: "clang++"
+         #  }
+         - {
+             name: "Linux Latest", artifact: "Terminal",
+             os: "ubuntu-latest",
+             path: "build", file: "Linux",
+             cc: "gcc", cxx: "g++"
+           }
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Download Artifact
+      uses: actions/download-artifact@v2.0.9
+      with:
+        # Artifact name
+        name: ${{ matrix.config.artifact }}
+        # Destination path
+        path: ${{ github.workspace }}/testing/
+    
+    - name: Test
+      working-directory: ${{ github.workspace }}/testing/
+      shell: bash
+      run: ./${{ matrix.config.artifact }}
