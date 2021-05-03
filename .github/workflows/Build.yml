@@ -108,7 +108,7 @@ jobs:
       working-directory: ${{ github.workspace }}/testing/
       shell: cmake -P {0}
       run: |
-        file(ARCHIVE_EXTRACT INPUT Linux.zip)
+        file(ARCHIVE_EXTRACT INPUT Linux)
     
     - name: Test
       working-directory: ${{ github.workspace }}/testing/
