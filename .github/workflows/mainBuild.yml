@@ -120,7 +120,7 @@ jobs:
       shell: cmake -P {0}
       run: |
         execute_process(
-          COMMAND ${CMAKE_COMMAND} -E tar xzf ${{ github.workspace }}/testing/${{ matrix.config.artifact }}
+          COMMAND ${CMAKE_COMMAND} -E tar xzf ${{ github.workspace }}/testing/${{ matrix.config.file }}
           WORKING_DIRECTORY ${{ github.workspace }}/testing/
         )
     
