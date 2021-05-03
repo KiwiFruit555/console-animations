@@ -24,10 +24,12 @@ jobs:
              path: "build/release", file: "Windows",
              cc: "cl", cxx: "cl"
            }
-         #- {
-         #    name: "macOS Latest",
-         #    os: "macos-latest"
-         #  }
+         - {
+             name: "macOS Latest", artifact: "Terminal",
+             os: "macos-latest",
+             path: "build", file: "macOS",
+             cc: "clang", cxx: "clang++"
+           }
          - {
              name: "Linux Latest", artifact: "Terminal",
              os: "ubuntu-latest",
