@@ -2,6 +2,10 @@
 #include <chrono>
 #include <thread>
 
+void kout(std::string string) {
+    std::cout << string << std::flush;
+}
+
 int main()
 {
     using namespace std::chrono_literals;
