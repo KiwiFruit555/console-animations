@@ -109,17 +109,22 @@ jobs:
       with:
         name: Linux
         path: ${{ github.workspace }}/testing/
-    
+ 
     - name: Test
-      shell: cmake -P {0}
+      shell: zsh
       run: |
-        execute_process (
-          COMMAND ${{ github.workspace }}/testing/Terminal
-          RESULT_VARIABLE result
-          OUTPUT_VARIABLE output
-          ERROR_VARIABLE output
-          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
-        )
+        cd ${{ github.workspace }}/testing/
+        ./Terminal
+#    - name: Test
+#      shell: cmake -P {0}
+#      run: |
+#        execute_process (
+#          COMMAND ${{ github.workspace }}/testing/Terminal
+#          RESULT_VARIABLE result
+#          OUTPUT_VARIABLE output
+#          ERROR_VARIABLE output
+#          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
+#        )
 
   test-macos:
     runs-on: macos-latest
