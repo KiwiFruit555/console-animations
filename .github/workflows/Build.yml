@@ -35,7 +35,31 @@ jobs:
       with:
         name: Linux
         path: ${{ github.workspace }}/build/Terminal
-        
+  test-linux:
+    runs-on: ubuntu-latest
+    name: Test::Linux
+    needs: build-linux
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Download Artifact
+      uses: actions/download-artifact@v2.0.9
+      with:
+        name: Linux
+        path: ${{ github.workspace }}/testing/
+ 
+    - name: Test
+      shell: cmake -P {0}
+      run: |
+        execute_process (
+          COMMAND ${{ github.workspace }}/testing/Terminal
+          RESULT_VARIABLE result
+          OUTPUT_VARIABLE output
+          ERROR_VARIABLE output
+          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
+        )
+
   build-macos:
     runs-on: macos-latest
     name: macOS Latest
@@ -65,7 +89,31 @@ jobs:
       with:
         name: macOS
         path: ${{ github.workspace }}/build/Terminal
-        
+  test-macos:
+    runs-on: macos-latest
+    name: Test::macOS
+    needs: build-macos
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Download Artifact
+      uses: actions/download-artifact@v2.0.9
+      with:
+        name: macOS
+        path: ${{ github.workspace }}/testing
+    
+    - name: Test
+      shell: cmake -P {0}
+      run: |
+        execute_process (
+          COMMAND ${{ github.workspace }}/testing/Terminal
+          RESULT_VARIABLE result
+          OUTPUT_VARIABLE output
+          ERROR_VARIABLE output
+          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
+        )
+
   build-windows:
     runs-on: windows-latest
     name: Windows Latest
@@ -95,57 +143,6 @@ jobs:
       with:
         name: Windows
         path: ${{ github.workspace }}/build/release/Terminal.exe
-
-  test-linux:
-    runs-on: ubuntu-latest
-    name: Test::Linux
-    needs: build-linux
-    
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Download Artifact
-      uses: actions/download-artifact@v2.0.9
-      with:
-        name: Linux
-        path: ${{ github.workspace }}/testing/
- 
-    - name: Test
-      shell: cmake -P {0}
-      run: |
-        execute_process (
-          COMMAND ${{ github.workspace }}/testing/Terminal
-          RESULT_VARIABLE result
-          OUTPUT_VARIABLE output
-          ERROR_VARIABLE output
-          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
-        )
-
-  test-macos:
-    runs-on: macos-latest
-    name: Test::macOS
-    needs: build-macos
-    
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Download Artifact
-      uses: actions/download-artifact@v2.0.9
-      with:
-        name: macOS
-        path: ${{ github.workspace }}/testing
-    
-    - name: Test
-      shell: cmake -P {0}
-      run: |
-        execute_process (
-          COMMAND ${{ github.workspace }}/testing/Terminal
-          RESULT_VARIABLE result
-          OUTPUT_VARIABLE output
-          ERROR_VARIABLE output
-          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
-        )
-      
   test-windows:
     runs-on: windows-latest
     name: Test::Windows
@@ -169,4 +166,4 @@ jobs:
           OUTPUT_VARIABLE output
           ERROR_VARIABLE output
           ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
-        )
+        )  
