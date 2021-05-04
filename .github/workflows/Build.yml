@@ -118,7 +118,7 @@ jobs:
           RESULT_VARIABLE result
           OUTPUT_VARIABLE output
           ERROR_VARIABLE output
-          ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
+          ECHO_RESULT_VARIABLE ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
         )
 
   test-macos:
