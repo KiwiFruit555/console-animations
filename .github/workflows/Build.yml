@@ -113,8 +113,7 @@ jobs:
     - name: Test
       shell: bash
       run: |
-        cd ${{ github.workspace }}/testing/
-        ./Terminal
+        "${{ github.workspace }}/testing/Terminal"
 #    - name: Test
 #      shell: cmake -P {0}
 #      run: |
