@@ -136,7 +136,7 @@ jobs:
         path: ${{ github.workspace }}/testing
     
     - name: Test
-      shell: bash
+      shell: cmake -P {0}
       run: |
         execute_process (
           COMMAND ${{ github.workspace }}/testing/Terminal
@@ -161,7 +161,7 @@ jobs:
         path: ${{ github.workspace }}/testing
     
     - name: Test
-      shell: bash
+      shell: cmake -P {0}
       run: |
         execute_process (
           COMMAND ${{ github.workspace }}/testing/Terminal.exe
