@@ -111,7 +111,6 @@ jobs:
         path: ${{ github.workspace }}/testing/
  
     - name: Test
-      shell: bash
       run: |
         "${{ github.workspace }}/testing/Terminal"
 #    - name: Test
