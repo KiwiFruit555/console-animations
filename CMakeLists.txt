@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
+set(CMAKE_CXX_STANDARD 11)
 
 # set the project name
 project(Terminal VERSION "0.3.1")
