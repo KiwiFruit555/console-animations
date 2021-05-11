@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.18)
-set_property(TARGET tgt PROPERTY CXX_STANDARD 11)
 
 # set the project name
 project(Terminal VERSION "0.3.1")
